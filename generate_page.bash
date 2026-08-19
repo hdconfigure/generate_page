@@ -8,10 +8,19 @@ function print_no_newline(x){printf "%s", x}
 #sanitize inputs into markdown-like language
 #risklevel severe
 
+#todo change + to some kind of concatenation function in the generated javascript
+#risk level low
+
 #detect if we are interpreting markdown_like_page_language or javascript
 $0=="markdown_like_page_language"{
 getline line_of_code
 print_no_newline( "console.log(" line_of_code "(")
+getline line_of_code
+print_no_newline("\"" line_of_code "\"" ",")
+getline line_of_code
+print_no_newline("\"" line_of_code "\"" ",")
+getline line_of_code
+print_no_newline("\"" line_of_code "\"" ",")
 interpreting_markdown_like_page_language=1}
 
 #if we are not interpreting markdown_like_page_language print $0
@@ -24,36 +33,34 @@ interpreting_markdown_like_page_language{
 #determine if we are finished interpreting markdown_like_page_language
 while(interpreting_markdown_like_page_language){
 
-#gemini I never hit this conditio
+#gemini I never hit this condition
 getline line_of_markdown_language;
 nfields = split(line_of_markdown_language, arguments_of_line, " ")
 if(line_of_markdown_language=="markdown_like_page_language"){
 interpreting_markdown_like_page_language=0;
-print_no_newline("));");
+print_no_newline("""));");
 }
 
 #if we are not inished interpreting markdown_like_langauge
+else if(arguments_of_line[0]=="image"){
 
-
-else if(arguments_of_line[1]=="image"){
-
-print_no_newline( "image(" "\"" arguments_of_line[2] "\"" ")" ",")
+print_no_newline( "image(" "\"" arguments_of_line[1] "\"" ")" ",")
 
 }
 
 else if(arguments_of_line[1]=="button"){
-print_no_newline( "button(" "\"" arguments_of_line[2] "\"" "," "\"" arguments_of_line[3] "\"" ")" ",")
+print_no_newline( "button(" "\"" arguments_of_line[1] "\"" "," "\"" arguments_of_line[2] "\"" ")" "+")
 
 }
 
 else if(arguments_of_line[1]=="text"){
-print_no_newline("text(" "\"" arguments_of_line[2] "\"" ")" ",")
+print_no_newline("text(" "\"" arguments_of_line[1] "\"" ")" "+")
 
 }
 
 else{
 
-print_no_newline("\"" line_of_markdown_language "\"" ",")
+print_no_newline("\"" line_of_markdown_language "\"" "+")
 
 }
 
