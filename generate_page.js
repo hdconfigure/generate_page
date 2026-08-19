@@ -67,25 +67,11 @@ var top_bar=()=>{return `
     </div>`;
                                      }
     
-     <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th>Where will your travels take you?</th>
-        <tbody>
-        
-          <tr>
-            <td class="action-cell">
-              <img src="/assets/vista.jpg" alt="Flight Simulator">
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    
+var bottom_license=(license)=>{return `
 <div style="text-align: right; font-size: 11px; color: #888888; font-family: sans-serif;">
-  Copyright Aug 13 2026 John Morris Beck and Theron Kauk. All rights reserved.
-</div>
+ license
+</div>`;
+                              }
 
 
 
