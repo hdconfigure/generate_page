@@ -84,27 +84,21 @@ var bottom_license=(license)=>{return `
     </a>
   </div>
 
-  <div class="card-container">
-    <!-- Header & Slogan Banner -->
-    <div class="header-banner">
-      <h1>Flight Deck Experience</h1>
-      <p class="description">CAN YOU TAKEOFF AND LAND A JETLINER?</p>
-    </div>
 
-    <!-- Table: 1 Header, 1 Cell Below -->
+
+var button(link,text){ return `
     <div class="table-wrapper">
       <table>
-        <thead>
-          <tr>
-            <th>pages</th>
-          </tr>
-        </thead>
         <tbody>
           <tr>
             <td class="action-cell">
-              <a href="/flightdeck/" class="table-btn table-btn-slate">homepage</a>
+              <a href="${link}" class="table-btn table-btn-slate">${text}</a>
             </td>
           </tr>
+  </tbody>
+  </table>
+  </div>`;
+                     }
           
           
                     <tr>
