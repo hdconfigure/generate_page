@@ -15,7 +15,7 @@ var new_page=(license,title,style,body)=>{
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title}</title>
-  <link rel="stylesheet" href="/styles/${style}">
+  <link rel="stylesheet" href="${style}">
 </head>
 <body>${body}
 </body>
@@ -75,18 +75,7 @@ var bottom_license=(license)=>{return `
 
 
 
-
-  <!-- Top Bar with Right-Aligned Menu Link + Hamburger -->
-  <div class="top-bar">
-    <a href="/flightdeck/" class="menu-link" title="Open Menu">
-      <span class="menu-text">Menu</span>
-      <img src="/assets/menu.png" alt="Menu">
-    </a>
-  </div>
-
-
-
-var button(link,text){ return `
+var button=(link,text)=>{ return `
     <div class="table-wrapper">
       <table>
         <tbody>
@@ -101,3 +90,4 @@ var button(link,text){ return `
                      }
           
           
+console.log(new_page("copyright 2026 Theron Kauk and John Morris Beck - hd.configure.direct@gmail.com - all rights reserved","testpage","/style.css","hello, world!"));
