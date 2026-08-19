@@ -22,13 +22,14 @@ var new_page=(license,title,style,body)=>{
 </html>`;
 }
 
-  <!-- Top Bar with Right-Aligned Menu Link + Hamburger -->
+var top_bar=()=>{return `
   <div class="top-bar">
     <a href="/menu/" class="menu-link" title="Open Menu">
       <span class="menu-text">Menu</span>
       <img src="/assets/menu.png" alt="Menu">
     </a>
-  </div>
+  </div>`;
+                }
 
   <div class="card-container">
     <!-- Header & Slogan Banner -->
