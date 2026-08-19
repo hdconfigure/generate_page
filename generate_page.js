@@ -59,12 +59,13 @@ var top_bar=()=>{return `
     </div>`;
                                          }
 
-    <!-- Paragraph Container Below Table -->
+      var text_element=(text_value)=>{return `
     <div class="info-block">
       <p>
-        Experience high-definition immersive flight simulation designed with modern precision and realism. From full-cockpit displays to ultra-responsive controls, and experience the work of a commercial pilot.
-      </p>
-    </div>
+        ${text_value}
+         </p>
+    </div>`;
+                                     }
     
      <div class="table-wrapper">
       <table>
