@@ -39,24 +39,25 @@ var top_bar=()=>{return `
     </div>`;
                                            }
 
-    <!-- Table: 1 Header, 1 Cell Below -->
+
+    var image=(image_header,image_path)=>{return `
     <div class="table-wrapper">
       <table>
         <thead>
           <tr>
-            <th>CAN YOU TAKEOFF AND LAND A JETLINER?</th>
+            <th>${image_header}</th>
           </tr>
         </thead>
         <tbody>
-        
           <tr>
             <td class="action-cell">
-              <img src="/assets/flightdeck.jpg" alt="Flight Simulator">
+              <img src="${image_path}" alt="Flight Simulator">
             </td>
           </tr>
         </tbody>
       </table>
-    </div>
+    </div>`;
+                                         }
 
     <!-- Paragraph Container Below Table -->
     <div class="info-block">
