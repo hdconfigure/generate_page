@@ -1,13 +1,20 @@
-var new_page=(title,)=>{
+//copyright 2026 Theron Kauk and John Morris Beck - hd.configure.direct@gmail.com - all rights reserved
+
+//todo:
+//sanitize inputs to these functions with regex
+//security risk level - high
+
+var new_page=(license,title,)=>{
   return `<!DOCTYPE html>
+  ${license}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Page Title</title>
+  <title>${title}</title>
   <link rel="stylesheet" href="/style.css">
 </head>
-<body>
+<body>{body
 
   <!-- Top Bar with Right-Aligned Menu Link + Hamburger -->
   <div class="top-bar">
