@@ -2,17 +2,20 @@
 #copyright 2026 Theron Kauk and John Morris Beck - hd.configure.direct@gmail.com - all rights reserved
 markdown_like_page_language(){ awk '
 
+function print_no_newline(x){printf "%s", x}
+
 #todo
 #sanitize inputs into markdown-like language
 #risklevel severe
 
 #detect if we are interpreting markdown_like_page_language or javascript
 $0=="markdown_like_page_language"{
-printf "%s" "console.log("$1"(";
-interpet_markdown_like_page_language=1}
+getline line_of_code
+print_no_newline( "console.log(" line_of_code "(")
+interpreting_markdown_like_page_language=1}
 
 #if we are not interpreting markdown_like_page_language print $0
-!interpret_markdown_like_page_language;
+!interpreting_markdown_like_page_language;
 
 #if we are interpreting markdown_like_page_language
 interpreting_markdown_like_page_language{
@@ -20,22 +23,45 @@ interpreting_markdown_like_page_language{
 
 #determine if we are finished interpreting markdown_like_page_language
 while(interpreting_markdown_like_page_language){
+
+#gemini I never hit this conditio
 getline line_of_markdown_language;
+nfields = split(line_of_markdown_language, arguments_of_line, " ")
 if(line_of_markdown_language=="markdown_like_page_language"){
 interpreting_markdown_like_page_language=0;
-printf "%s" "));"
+print_no_newline("));");
 }
 
 #if we are not inished interpreting markdown_like_langauge
+
+
+else if(arguments_of_line[1]=="image"){
+
+print_no_newline( "image(" "\"" arguments_of_line[2] "\"" ")" ",")
+
+}
+
+else if(arguments_of_line[1]=="button"){
+print_no_newline( "button(" "\"" arguments_of_line[2] "\"" "," "\"" arguments_of_line[3] "\"" ")" ",")
+
+}
+
+else if(arguments_of_line[1]=="text"){
+print_no_newline("text(" "\"" arguments_of_line[2] "\"" ")" ",")
+
+}
+
 else{
 
-printf "%s" "\"" $0 "\"" ",";
+print_no_newline("\"" line_of_markdown_language "\"" ",")
 
 }
 
 }
 
 }
+
+
 
 
 ';};
