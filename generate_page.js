@@ -22,9 +22,9 @@ var new_page=(license,title,style,body)=>{
 </html>`;
 }
 
-var top_bar=()=>{return `
+var top_bar=(link)=>{return `
   <div class="top-bar">
-    <a href="/menu/" class="menu-link" title="Open Menu">
+    <a href="${link}" class="menu-link" title="Open Menu">
       <span class="menu-text">Menu</span>
       <img src="/assets/menu.png" alt="Menu">
     </a>
@@ -101,74 +101,3 @@ var button(link,text){ return `
                      }
           
           
-                    <tr>
-            <td class="action-cell">
-              <a href="/flightdeck/" class="table-btn table-btn-slate">about</a>
-            </td>
-          </tr>
-          
-                    <tr>
-            <td class="action-cell">
-              <a href="/flightdeck/" class="table-btn table-btn-slate">contact</a>
-            </td>
-          </tr>
-          
-                    <tr>
-            <td class="action-cell">
-              <a href="/flightdeck/" class="table-btn table-btn-slate">directions</a>
-            </td>
-          </tr>
-          
-          
-
-          
-          
-          
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-
-
-
-    
-<div style="text-align: right; font-size: 11px; color: #888888; font-family: sans-serif;">
-  Copyright Aug 13 2026 John Morris Beck and Theron Kauk. All rights reserved.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</body>
-</html>
-
-    
-    
-    
-
-  </div>
-
-</body>
-</html>
