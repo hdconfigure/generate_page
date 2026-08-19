@@ -31,12 +31,13 @@ var top_bar=()=>{return `
   </div>`;
                 }
 
+  var header=(header_text,header_subtext)=>{return `
   <div class="card-container">
-    <!-- Header & Slogan Banner -->
     <div class="header-banner">
-      <h1>Live Flight Deck Experience</h1>
-      <p class="description">by hd configure</p>
-    </div>
+      <h1>${header_text}</h1>
+      <p class="description">${header_subtext}</p>
+    </div>`;
+                                           }
 
     <!-- Table: 1 Header, 1 Cell Below -->
     <div class="table-wrapper">
