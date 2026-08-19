@@ -4,17 +4,23 @@
 //sanitize inputs to these functions with regex
 //security risk level - high
 
-var new_page=(license,title,)=>{
+
+//generates a new html page
+//meant to be wrapped around other functions
+var new_page=(license,title,style,body)=>{
   return `<!DOCTYPE html>
-  ${license}
+  <!--${license}-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title}</title>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/styles/${style}">
 </head>
-<body>{body
+<body>${body}
+</body>
+</html>`;
+}
 
   <!-- Top Bar with Right-Aligned Menu Link + Hamburger -->
   <div class="top-bar">
