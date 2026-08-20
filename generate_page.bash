@@ -49,7 +49,11 @@ print_no_newline( "image(" "\"" arguments_of_line[2] "\"" ")" "+")
 }
 
 else if(arguments_of_line[1]=="button"){
-print_no_newline( "button(" "\"" arguments_of_line[2] "\"" "," "\"" arguments_of_line[3] "\"" ")" "+")
+textline="";
+for(iterator=3;iterator<=fields;iterator++){
+textline=textline arguments_of_line[iterator] " ";
+}
+print_no_newline( "button(" "\"" arguments_of_line[2] "\"" "," "\"" textline "\"" ")" "+")
 
 }
 
