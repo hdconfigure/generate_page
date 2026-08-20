@@ -25,10 +25,9 @@ var new_page=(license,title,style,body)=>{
 //make a navbar for the page
 var top_bar=(link)=>{return `
   <div class="top-bar">
-      <span class="menu-text">Menu</span>
     <a href="${link}" class="menu-link" title="Open Menu">
-
       <img src="/assets/menu.png" alt="Menu">
+      <span class="menu-text">Menu</span>
     </a>
   </div>`;
                     }
