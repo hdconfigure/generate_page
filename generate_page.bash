@@ -42,19 +42,19 @@ print_no_newline("\"\"));");
 }
 
 #if we are not inished interpreting markdown_like_langauge
-else if(arguments_of_line[0]=="image"){
+else if(arguments_of_line[1]=="image"){
 
-print_no_newline( "image(" "\"" arguments_of_line[1] "\"" ")" ",")
+print_no_newline( "image(" "\"" arguments_of_line[2] "\"" ")" "+")
 
 }
 
 else if(arguments_of_line[1]=="button"){
-print_no_newline( "button(" "\"" arguments_of_line[1] "\"" "," "\"" arguments_of_line[2] "\"" ")" "+")
+print_no_newline( "button(" "\"" arguments_of_line[2] "\"" "," "\"" arguments_of_line[3] "\"" ")" "+")
 
 }
 
 else if(arguments_of_line[1]=="text"){
-print_no_newline("text_element(" "\"" arguments_of_line[1] "\"" ")" "+")
+print_no_newline("text_element(" "\"" arguments_of_line[2] "\"" ")" "+")
 
 }
 
@@ -79,10 +79,7 @@ generate_page(){
 
     #create the javascript file that generates the new page
     pagefile="$1"
-    cat "/home/user/projects/flightdeckexperiences/generate_page.js" "$pagefile" | markdown_like_page_language > "/tmp/generate_page$$" 
-
-    node "/tmp/generate_page$$"
-    rm "/tmp/generate_page$$";
+    cat "/home/user/projects/flightdeckexperiences/generate_page.js" "$pagefile" | markdown_like_page_language > "/tmp/generate_page$$" ;node "/tmp/generate_page$$";rm "/tmp/generate_page$$";
 
 };
 generate_page "$@";
