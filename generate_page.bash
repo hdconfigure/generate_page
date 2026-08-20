@@ -1,89 +1,115 @@
-#!/bin/sh
-#copyright 2026 Theron Kauk and John Morris Beck - hd.configure.direct@gmail.com - all rights reserved
-markdown_like_page_language(){ awk '
+//copyright (c) 2026 Theron Kauk and John Morris Beck - hd.configure.direct@gmail.com - all rights reserved
 
-function print_no_newline(x){printf "%s", x}
-
-#todo
-#sanitize inputs into markdown-like language
-#risklevel severe
-
-#todo change + to some kind of concatenation function in the generated javascript
-#risk level low
-
-#detect if we are interpreting markdown_like_page_language or javascript
-$0=="markdown_like_page_language"{
-getline line_of_code
-print_no_newline( "console.log(" line_of_code "(")
-getline line_of_code
-print_no_newline("\"" line_of_code "\"" ",")
-getline line_of_code
-print_no_newline("\"" line_of_code "\"" ",")
-getline line_of_code
-print_no_newline("\"" line_of_code "\"" ",")
-interpreting_markdown_like_page_language=1}
-
-#if we are not interpreting markdown_like_page_language print $0
-!interpreting_markdown_like_page_language;
-
-#if we are interpreting markdown_like_page_language
-interpreting_markdown_like_page_language{
+//todo:
+//sanitize inputs to these functions with regex
+//security risk level - high
 
 
-#determine if we are finished interpreting markdown_like_page_language
-while(interpreting_markdown_like_page_language){
-
-#gemini I never hit this condition
-getline line_of_markdown_language;
-fields = split(line_of_markdown_language, arguments_of_line, " ");
-if(line_of_markdown_language=="markdown_like_page_language"){
-interpreting_markdown_like_page_language=0;
-print_no_newline("\"\"));");
+//generates a new html page
+//meant to be wrapped around other functions
+var new_page=(license,title,style,body)=>{
+    return `<!DOCTYPE html>
+  <!--${license}-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${title}</title>
+  <link rel="stylesheet" href="${style}">
+</head>
+<body>${body}
+</body>
+</html>`;
 }
 
-#if we are not inished interpreting markdown_like_langauge
-else if(arguments_of_line[1]=="image"){
+//make a navbar for the page
+var top_bar=(link)=>{return `
+  <div class="top-bar">
+    <a href="${link}" class="menu-link" title="Open Menu">
+      <span class="menu-text">Menu</span>
+      <img src="/assets/menu.png" alt="Menu">
+    </a>
+  </div>`;
+                    }
 
-print_no_newline( "image(" "\"" arguments_of_line[2] "\"" ")" "+")
+//make a header for the page
+var header=(header_text,header_subtext)=>{return `
+  <div class="card-container">
+    <div class="header-banner">
+      <h1>${header_text}</h1>
+      <p class="description">${header_subtext}</p>
+    </div>`;
+                                         }
 
+//make an image on the page
+var image=(image_path)=>{return `
+    <div class="table-wrapper">
+      <table>
+        <tbody>
+          <tr>
+            <td class="action-cell">
+              <img src="${image_path}" alt="Flight Simulator">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>`;
+                                     }
+
+
+var text_element=(text_value)=>{return `
+    <div class="info-block">
+      <p>
+        ${text_value}
+         </p>
+    </div>`;
+			       }
+
+//add a license to the bottom of the page
+var bottom_license=(license)=>{return `
+<div style="text-align: right; font-size: 11px; color: #888888; font-family: sans-serif;">
+ ${license}
+</div>`;
+                              }
+
+
+//create a button on the page
+var button=(link,text)=>{ return `
+    <div class="table-wrapper">
+      <table>
+        <tbody>
+          <tr>
+            <td class="action-cell">
+              <a href="${link}" class="table-btn table-btn-slate">${text}</a>
+            </td>
+          </tr>
+  </tbody>
+  </table>
+  </div>`;
+
+
+var subheader = (header_text) => {
+  return `
+    <div class="subheader-wrapper">
+      <h2 class="subheader-title">${header_text}</h2>
+    </div>`;
 }
+			}
 
-else if(arguments_of_line[1]=="button"){
-print_no_newline( "button(" "\"" arguments_of_line[2] "\"" "," "\"" arguments_of_line[3] "\"" ")" "+")
-
-}
-
-else if(arguments_of_line[1]=="text"){
-textline="";
-for(iterator=1;iterator<=fields;iterator++){
-textline=textline arguments_of_line[iterator] " ";
-}
-print_no_newline("text_element(" "\"" textline "\"" ")" "+");
-
-}
-
-else{
-
-print_no_newline("\"" line_of_markdown_language "\"" "+")
-
-}
-
-}
-
-}
+//prototypes updated 8/18/2026
+//var new_page=(license,title,style,body)=>{
+//    var top_bar=(link)=>{return `
+//  var header=(header_text,header_subtext)=>{return `
+//			 var image=(image_header,image_path)=>{return `
+//      var text_element=(text_value)=>{return `
+//							       var bottom_license=(license)=>{return `
+//var button=(link,text)=>{ return `
 
 
+var flightdeckexperiencepage=(menu_link,header_text,header_subtext,body)=>{return new_page(
+    "copyright (c) 2026 Theron Kauk and John Morris Beck - hd.configure.direct@gmail.com - all rights reserved",
+    "testpage",
+    "/style.css",
+    top_bar(menu_link) + header(header_text,header_subtext) + body + bottom_license("copyright (c) 2026 Theron Kauk and John Morris Beck all rights reserved"));
+									  }
 
-
-';};
-
-
-generate_page(){
-
-
-    #create the javascript file that generates the new page
-    pagefile="$1"
-    cat "/home/user/projects/flightdeckexperiences/generate_page.js" "$pagefile" | markdown_like_page_language > "/tmp/generate_page$$" ;node "/tmp/generate_page$$";rm "/tmp/generate_page$$";
-
-};
-generate_page "$@";
