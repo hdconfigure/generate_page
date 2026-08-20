@@ -54,7 +54,7 @@ print_no_newline( "button(" "\"" arguments_of_line[1] "\"" "," "\"" arguments_of
 }
 
 else if(arguments_of_line[1]=="text"){
-print_no_newline("text(" "\"" arguments_of_line[1] "\"" ")" "+")
+print_no_newline("text_element(" "\"" arguments_of_line[1] "\"" ")" "+")
 
 }
 
