@@ -105,6 +105,16 @@ var image=(image_path)=>{return `
         <img src="${image_path}" alt="Flight Simulator">
       </div>
     </div>`;
+			}
+
+// make a button on the page
+var button = (text, url, style = 'slate') => {
+  return `<a href="${url}" class="table-btn table-btn-${style}">${text}</a>`;
+}
+
+// make a button on the page (takes text and url)
+var button = (link,text) => {
+  return `<a href="${link}" class="table-btn table-btn-slate">${text}</a>`;
 }
 //prototypes updated 8/18/2026
 //var new_page=(license,title,style,body)=>{
