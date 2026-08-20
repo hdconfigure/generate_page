@@ -54,7 +54,11 @@ print_no_newline( "button(" "\"" arguments_of_line[2] "\"" "," "\"" arguments_of
 }
 
 else if(arguments_of_line[1]=="text"){
-print_no_newline("text_element(" "\"" arguments_of_line[2] "\"" ")" "+")
+textline="";
+for(iterator=1;iterator<=fields;iterator++){
+textline=textline arguments_of_line[iterator] " ";
+}
+print_no_newline("text_element(" "\"" textline "\"" ")" "+");
 
 }
 
@@ -79,7 +83,7 @@ generate_page(){
 
     #create the javascript file that generates the new page
     pagefile="$1"
-    cat "/home/user/projects/flightdeckexperiences/generate_page.js" "$pagefile" | markdown_like_page_language > "/tmp/generate_page$$" ;node "/tmp/generate_page$$";rm "/tmp/generate_page$$";
+    cat "/home/user/projects/flightdeckexperiences/generate_page.js" "$pagefile" | markdown_like_page_language #> "/tmp/generate_page$$" ;node "/tmp/generate_page$$";rm "/tmp/generate_page$$";
 
 };
 generate_page "$@";
