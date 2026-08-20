@@ -88,6 +88,14 @@ var button=(link,text)=>{ return `
   </div>`;
 			}
 
+var subheader=(header_text)=>{
+  return `
+    <div class="subheader-wrapper">
+      <h2 class="subheader-title">${header_text}</h2>
+    </div>`;
+}
+
+
 //prototypes updated 8/18/2026
 //var new_page=(license,title,style,body)=>{
 //    var top_bar=(link)=>{return `
