@@ -35,10 +35,10 @@ while(interpreting_markdown_like_page_language){
 
 #gemini I never hit this condition
 getline line_of_markdown_language;
-nfields = split(line_of_markdown_language, arguments_of_line, " ")
+fields = split(line_of_markdown_language, arguments_of_line, " ");
 if(line_of_markdown_language=="markdown_like_page_language"){
 interpreting_markdown_like_page_language=0;
-print_no_newline("""));");
+print_no_newline("\"\"));");
 }
 
 #if we are not inished interpreting markdown_like_langauge
