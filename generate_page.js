@@ -88,14 +88,24 @@ var button=(link,text)=>{ return `
   </div>`;
 			}
 
-var subheader=(header_text)=>{
+//make a subheader element for sections, images, or text with layered boxes
+var subheader = (header_text) => {
   return `
     <div class="subheader-wrapper">
-      <h2 class="subheader-title">${header_text}</h2>
+      <div class="subheader-inner">
+        <h2 class="subheader-title">${header_text}</h2>
+      </div>
     </div>`;
 }
 
-
+//make an image on the page
+var image=(image_path)=>{return `
+    <div class="table-wrapper">
+      <div class="image-cell-flush">
+        <img src="${image_path}" alt="Flight Simulator">
+      </div>
+    </div>`;
+}
 //prototypes updated 8/18/2026
 //var new_page=(license,title,style,body)=>{
 //    var top_bar=(link)=>{return `
