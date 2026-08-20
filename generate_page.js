@@ -128,7 +128,7 @@ var button = (link,text) => {
 
 var flightdeckexperiencepage=(menu_link,header_text,header_subtext,body)=>{return new_page(
     "copyright (c) 2026 Theron Kauk and John Morris Beck - hd.configure.direct@gmail.com - all rights reserved",
-    "testpage",
+    "FlightDeckExperiences",
     "/style.css",
     top_bar(menu_link) + header(header_text,header_subtext) + body + bottom_license("copyright (c) 2026 Theron Kauk and John Morris Beck all rights reserved"));
 									  }
